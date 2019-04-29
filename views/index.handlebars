@@ -13,8 +13,8 @@
         </div>
 
         <div class="form-group col-5 d-inline-block">
-          <select class="form-control" name="category" id="category" value="請選擇類別">
-            <option value="請選擇類別">請選擇類別</option>
+          <select class="form-control" name="category" id="category">
+            <option selected>請選擇類別</option>
             <option value="home">家居物業</option>
             <option value="shuttle-van">交通出行</option>
             <option value="grin-beam">休閒娛樂</option>
@@ -68,7 +68,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-                <form action="/restaurants/{{this._id}}/delete?_method=DELETE" method="POST">
+                <form action="/records/{{this._id}}/delete?_method=DELETE" method="POST">
                   <button type="submit" class="btn btn-danger mt-3">刪除</button>
                 </form>
               </div>
@@ -78,7 +78,7 @@
         {{/each}}
 
         <div class="totalAmount col-10 mx-auto d-block mb-3">
-          <a class="btn btn-success mt-5" href="/records/{{this._id}}/records/new">新增資料</a>
+          <a class="btn btn-success mt-5" href="/records/new">新增資料</a>
         </div>
       </div>
     </div>

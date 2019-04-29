@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 const Record = require('./models/record');
 const User = require('./models/user');
 const methodOverride = require('method-override');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const helpers = require('handlebars-helpers')();
 
 // Router Variables
 const HomeRouter = require('./routes/home');

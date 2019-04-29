@@ -1,0 +1,46 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-10 mx-auto text-center">
+      <h4>請輸入你的支出</h4>
+      <span>*必填欄位</span>
+
+      <form action="/records/new?_method=POST" method="POST" class="mt-5 py-5 mx-auto bg-light">
+
+        <h4 class="mb-5 text-success">快當個乖寶寶，記錄每一天的支出！</h4>
+
+        <div class=" form-group">
+          <label for="name" class="mr-3">名稱*：</label>
+          <input class="col-4" type="text" name="name" id="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="date" class="mr-3">日期*：</label>
+          <input class="col-4" id="date" type="date" name="date" value="2019-04-23" min="2019-01-01" max="2019-12-31"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="category" class="mr-3">分類*：</label>
+          <select class="d-inline-block col-4 custom-select" name="category" id="category" required>
+            <option selected>請選擇類別</option>
+            <option value="home">家居物業</option>
+            <option value="shuttle-van">交通出行</option>
+            <option value="grin-beam">休閒娛樂</option>
+            <option value="utensils">餐飲食品</option>
+            <option value="pen">其他</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="amount" class="mr-3">金額*：</label>
+          <input class="col-4" type="text" name="amount" id="amount" required>
+        </div>
+
+        <div class="totalAmount col-10 mx-auto d-block mb-3">
+          <button type="submit" class="btn btn-primary mt-3" href="/records/new">建立支出</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>

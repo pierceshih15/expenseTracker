@@ -1,0 +1,48 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-10 mx-auto text-center">
+      <h4>正在更新你的支出</h4>
+      <span>*必填欄位</span>
+
+      <form action="/records/{{{record.id}}}/edit?_method=PUT" method="POST" class="mt-5 py-5 mx-auto bg-light">
+
+        <h4 class="mb-5 text-success">快當個乖寶寶，記錄每一天的支出！</h4>
+
+        <div class=" form-group">
+          <label for="name" class="mr-3">名稱*：</label>
+          <input class="col-4" type="text" name="name" id="name" value="{{record.name}}" required>
+        </div>
+
+        <div class="form-group">
+          <label for="date" class="mr-3">日期*：</label>
+          <input class="col-4" id="date" type="date" name="date" value="{{record.date}}" min="2019-01-01"
+            max="2019-12-31" required>
+        </div>
+
+        <div class="form-group">
+          <label for="category" class="mr-3">分類*：</label>
+          <select class="d-inline-block col-4 custom-select" name="category" id="category" value="{{record.category}}"
+            required>
+            <option selected>請選擇類別</option>
+            <option value="home" {{#eq record.category "home"}} selected{{/eq}}>家居物業</option>
+            <option value="shuttle-van" {{#eq record.category "shuttle-van"}} selected{{/eq}}>交通出行</option>
+            <option value="grin-beam" {{#eq record.category "grin-beam"}} selected{{/eq}}>休閒娛樂</option>
+            <option value="utensils" {{#eq record.category "utensils"}} selected{{/eq}}>餐飲食品</option>
+            <option value="pen" {{#eq record.category "pen"}} selected{{/eq}}>其他</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="amount" class="mr-3">金額*：</label>
+          <input class="col-4" type="text" name="amount" id="amount" value="{{record.amount}}" required>
+        </div>
+
+        <div class="totalAmount col-10 mx-auto d-block mb-3">
+          <button type="submit" class="btn btn-primary mt-3">更新支出</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+</div>
