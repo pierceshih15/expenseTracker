@@ -1,0 +1,86 @@
+<!-- record summary -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-10 mx-auto text-center">
+      <div class="filter d-block mb-3">
+        <div class="form-group col-5 d-inline-block">
+          <select class="form-control" name="month" id="month" value="請選擇月份">
+            <option value="請選擇月份">請選擇月份</option>
+            {{#each monthList}}
+            <option value="{{this.name}}">{{this.name}}</option>
+            {{/each}}
+          </select>
+        </div>
+
+        <div class="form-group col-5 d-inline-block">
+          <select class="form-control" name="category" id="category" value="請選擇類別">
+            <option value="請選擇類別">請選擇類別</option>
+            <option value="home">家居物業</option>
+            <option value="shuttle-van">交通出行</option>
+            <option value="grin-beam">休閒娛樂</option>
+            <option value="utensils">餐飲食品</option>
+            <option value="pen">其他</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="totalAmount col-10 mx-auto d-block mb-3">
+        <h4 class="text-left">總金額：</h4>
+        <h1 class="text-right">$ {{totalAmount}}</h1>
+      </div>
+
+      <div class="records list-group col-10 m-auto d-block mb-3">
+        {{#each records}}
+        <div class="list-group-item list-group-item-dark mb-3">
+          <div class="row">
+            <div class="d-inline-block col-1">
+              <i class="fas fa-{{this.category}} text-info" style="font-size: 40px; line-height:60px;"></i>
+            </div>
+            <div class="d-inline-block col-5">
+              <h4>{{this.name}}</h4>
+              <span>{{this.date}}</span>
+            </div>
+            <div class=" d-inline-block col-1 my-auto mr-5">
+              <span style="font-size: 20px; line-height:60px;">{{this.amount}}</span>
+            </div>
+
+            <div class="d-inline-block col-3 my-auto ml-5">
+              <a class="btn btn-primary" href="/records/{{this._id}}/edit">編輯</a>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-danger ml-3" data-toggle="modal"
+                data-target="#trigger-deleteItem-{{this._id}}">刪除</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal 優化使用者體驗，刪除餐廳-->
+        <div class="modal fade" id="trigger-deleteItem-{{this._id}}" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-primary">刪除警示</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <big class="font-weight-bold">請問您確定要刪除資料嗎?</big>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                <form action="/restaurants/{{this._id}}/delete?_method=DELETE" method="POST">
+                  <button type="submit" class="btn btn-danger mt-3">刪除</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+
+        <div class="totalAmount col-10 mx-auto d-block mb-3">
+          <a class="btn btn-success mt-5" href="/records/{{this._id}}/records/new">新增資料</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

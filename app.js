@@ -5,15 +5,26 @@ const mongoose = require('mongoose');
 const Record = require('./models/record');
 const User = require('./models/user');
 const methodOverride = require('method-override');
+const bodyParser = require('body-parser')
 
 // Router Variables
 const HomeRouter = require('./routes/home');
 const RecordRouter = require('./routes/record');
 
+const exphbs = require('express-handlebars');
+
+app.engine('handlebars', exphbs({
+  defaultLayout: 'main'
+}))
+app.set('view engine', 'handlebars')
+
+app.use(bodyParser.urlencoded({
+  extended: true,
+}));
 app.use(methodOverride('_method'));
 
 // 建立 DB 連線
-mongoose.connect('mongodb://localhost/expense-tracker', {
+mongoose.connect('mongodb://localhost/records', {
   useNewUrlParser: true,
   useCreateIndex: true,
 });

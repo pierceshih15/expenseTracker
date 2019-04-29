@@ -15,14 +15,14 @@ const recordSchema = new Schema({
     required: true,
   },
   date: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    required: true,
   },
   userId: {
     type: Schema.Types.ObjectId,
     ref: 'User',
     index: true,
-    required: true,
+    // required: true,
   }
 })
 
