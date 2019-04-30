@@ -75,6 +75,6 @@ app.use('/records', RecordRouter);
 app.use('/users', UserRouter);
 app.use('/auth', AuthRouter);
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log('Express is running.')
 })
