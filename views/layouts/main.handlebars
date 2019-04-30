@@ -24,8 +24,11 @@
         <a class="navbar-brand btn btn-dark text-light " href="/">
           皮皮記帳網
         </a>
-
-        <a class="btn btn-success" href="/users/login">Login</a>
+        {{#if isAuthenticated}}
+        <a class="btn btn-danger d-inline-block ml-2" href="/users/logout">Logout</a>
+        {{else}}
+        <a class="btn btn-success d-inline-block ml-2" href="/users/login">Login</a>
+        {{/if}}
       </div>
     </nav>
   </header>

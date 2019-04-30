@@ -8,6 +8,9 @@ const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const helpers = require('handlebars-helpers')();
 
+const session = require('express-session');
+const passport = require('passport');
+
 // Router Variables
 const HomeRouter = require('./routes/home');
 const RecordRouter = require('./routes/record');
@@ -20,10 +23,27 @@ app.engine('handlebars', exphbs({
 }))
 app.set('view engine', 'handlebars')
 
+app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
 app.use(methodOverride('_method'));
+
+app.use(session({
+  secret: 'ioqeodond',
+  resave: false,
+  saveUninitialized: false,
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport);
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  res.locals.isAuthenticated = req.isAuthenticated();
+  next();
+});
 
 // 建立 DB 連線
 mongoose.connect('mongodb://localhost/records', {
@@ -44,6 +64,7 @@ db.once('open', () => {
 app.use('/', HomeRouter);
 app.use('/records', RecordRouter);
 app.use('/users', UserRouter);
+
 
 app.listen(port, () => {
   console.log('Express is running.')

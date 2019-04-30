@@ -3,8 +3,11 @@ const router = express();
 const Record = require('../models/record');
 const monthList = require('../public/data/months.json').results;
 const categoryList = require('../public/data/categories.json').results;
+const {
+  authenticated
+} = require('../config/auth');
 
-router.get('/', (req, res) => {
+router.get('/', authenticated, (req, res) => {
   // 宣告變數作為篩選條件
   const filterMonth = req.query.filterMonth || '';
   const filterMonthRegExp = new RegExp("2019-" + filterMonth, "i");
