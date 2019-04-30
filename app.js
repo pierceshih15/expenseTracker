@@ -55,7 +55,7 @@ app.use((req, res, next) => {
 });
 
 // 建立 DB 連線
-mongoose.connect('mongodb://localhost/records', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/records', {
   useNewUrlParser: true,
   useCreateIndex: true,
 });
