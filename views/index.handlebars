@@ -2,26 +2,45 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-10 mx-auto text-center">
-      <div class="filter d-block mb-3">
-        <div class="form-group col-5 d-inline-block">
-          <select class="form-control" name="month" id="month" value="請選擇月份">
-            <option value="請選擇月份">請選擇月份</option>
+      <div class="filter d-block mb-5">
+
+        <div class="btn-group col-5 d-inline-block">
+          <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            {{#if filterMonth}}
+            {{{filterMonth}}} 月份
+            {{else}}
+            請選擇月份
+            {{/if}}
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/?filterMonth=&?filterCategory={{filterCategory}}">不按月份</a>
             {{#each monthList}}
-            <option value="{{this.name}}">{{this.name}}</option>
+            <a class="dropdown-item"
+              href="/?filterMonth={{this.number}}&?filterCategory={{filterCategory}}">{{this.name}}</a>
             {{/each}}
-          </select>
+          </div>
         </div>
 
-        <div class="form-group col-5 d-inline-block">
-          <select class="form-control" name="category" id="category">
-            <option selected>請選擇類別</option>
-            <option value="home">家居物業</option>
-            <option value="shuttle-van">交通出行</option>
-            <option value="grin-beam">休閒娛樂</option>
-            <option value="utensils">餐飲食品</option>
-            <option value="pen">其他</option>
-          </select>
+        <div class="btn-group col-5 d-inline-block">
+          <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            {{#if filterCategory}}
+            {{{filterCategory}}} 類別
+            {{else}}
+            請選擇類別
+            {{/if}}
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/?filterCategory=&?filterMonth={{filterMonth}}">不按類別</a>
+            {{#each categoryList}}
+            <a class="dropdown-item" href="/?filterCategory={{this.name_en}}&?filterMonth={{filterMonth}}">
+              {{this.name}}
+            </a>
+            {{/each}}
+          </div>
         </div>
+
       </div>
 
       <div class="totalAmount col-10 mx-auto d-block mb-3">
