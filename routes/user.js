@@ -35,7 +35,7 @@ router.post('/register', (req, res) => {
 
   // Step 2：檢查使用者的 email 是否已註冊
   User.findOne({
-    email: email
+    email: email,
   }).then(user => {
     // Step 2-1：若已註冊過，則跳轉至註冊頁面，亦將表單資料回傳
     if (user) {

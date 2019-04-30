@@ -12,7 +12,13 @@ router.get('/new', authenticated, (req, res) => {
 
 // 建立 Record 動作
 router.post('/new', authenticated, (req, res) => {
-  const record = Record(req.body);
+  const record = Record({
+    name: req.body.name,
+    category: req.body.category,
+    amount: req.body.amount,
+    date: req.body.date,
+    userId: req.user._id
+  });
   record.save(err => {
     if (err) return console.error(err);
     res.redirect('/');
@@ -21,7 +27,8 @@ router.post('/new', authenticated, (req, res) => {
 
 // 編輯 Record 頁面
 router.get('/:id/edit', authenticated, (req, res) => {
-  Record.findById({
+  Record.findOne({
+    userId: req.user._id,
     _id: req.params.id
   }, (err, record) => {
     if (err) return console.error(err);
@@ -33,8 +40,9 @@ router.get('/:id/edit', authenticated, (req, res) => {
 
 // 編輯 Record 動作
 router.put('/:id/edit', authenticated, (req, res) => {
-  Record.findById({
-    _id: req.params.id
+  Record.findOne({
+    _id: req.params.id,
+    userId: req.user._id,
   }, (err, record) => {
     if (err) return console.error(err);
 
@@ -49,8 +57,9 @@ router.put('/:id/edit', authenticated, (req, res) => {
 
 // 刪除 Record 動作
 router.delete('/:id/delete', authenticated, (req, res) => {
-  Record.findById({
-    _id: req.params.id
+  Record.findOne({
+    _id: req.params.id,
+    userId: req.user._id,
   }, (err, record) => {
     if (err) return console.error(err);
 

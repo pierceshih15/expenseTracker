@@ -14,6 +14,7 @@ router.get('/', authenticated, (req, res) => {
   const filterCategory = req.query.filterCategory || '';
   const filterCategoryRegExp = new RegExp(filterCategory, "i");
   Record.find({
+    userId: req.user._id,
     date: {
       $regex: filterMonthRegExp
     },
