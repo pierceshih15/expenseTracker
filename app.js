@@ -7,9 +7,10 @@ const User = require('./models/user');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const helpers = require('handlebars-helpers')();
-
 const session = require('express-session');
 const passport = require('passport');
+const exphbs = require('express-handlebars');
+const flash = require('connect-flash');
 
 // Router Variables
 const HomeRouter = require('./routes/home');
@@ -17,7 +18,6 @@ const RecordRouter = require('./routes/record');
 const UserRouter = require('./routes/user');
 const AuthRouter = require('./routes/auth');
 
-const exphbs = require('express-handlebars');
 
 if (process.env.NODE_ENV !== 'production') { // 如果不是 production 模式
   require('dotenv').config() // 使用 dotenv 讀取 .env 檔案
@@ -42,11 +42,15 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+// flash
+app.use(flash());
 
 require('./config/passport')(passport);
 app.use((req, res, next) => {
   res.locals.user = req.user;
   res.locals.isAuthenticated = req.isAuthenticated();
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.warning_msg = req.flash('warning_msg');
   next();
 });
 
