@@ -11,6 +11,7 @@ const helpers = require('handlebars-helpers')();
 // Router Variables
 const HomeRouter = require('./routes/home');
 const RecordRouter = require('./routes/record');
+const UserRouter = require('./routes/user');
 
 const exphbs = require('express-handlebars');
 
@@ -42,6 +43,7 @@ db.once('open', () => {
 // Import Router 
 app.use('/', HomeRouter);
 app.use('/records', RecordRouter);
+app.use('/users', UserRouter);
 
 app.listen(port, () => {
   console.log('Express is running.')
