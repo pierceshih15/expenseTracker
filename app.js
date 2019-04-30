@@ -2,8 +2,6 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const mongoose = require('mongoose');
-const Record = require('./models/record');
-const User = require('./models/user');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const helpers = require('handlebars-helpers')();
@@ -12,12 +10,14 @@ const passport = require('passport');
 const exphbs = require('express-handlebars');
 const flash = require('connect-flash');
 
+const Record = require('./models/record');
+const User = require('./models/user');
+
 // Router Variables
 const HomeRouter = require('./routes/home');
 const RecordRouter = require('./routes/record');
 const UserRouter = require('./routes/user');
 const AuthRouter = require('./routes/auth');
-
 
 if (process.env.NODE_ENV !== 'production') { // 如果不是 production 模式
   require('dotenv').config() // 使用 dotenv 讀取 .env 檔案

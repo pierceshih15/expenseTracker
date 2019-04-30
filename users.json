@@ -1,0 +1,13 @@
+{
+  "results": [{
+      "name": "阿明",
+      "email": "ming@gmail.com",
+      "password": "1234"
+    },
+    {
+      "name": "阿傑",
+      "email": "jay@gmail.com",
+      "password": "1234"
+    }
+  ]
+}
