@@ -15,8 +15,13 @@ const passport = require('passport');
 const HomeRouter = require('./routes/home');
 const RecordRouter = require('./routes/record');
 const UserRouter = require('./routes/user');
+const AuthRouter = require('./routes/auth');
 
 const exphbs = require('express-handlebars');
+
+if (process.env.NODE_ENV !== 'production') { // 如果不是 production 模式
+  require('dotenv').config() // 使用 dotenv 讀取 .env 檔案
+}
 
 app.engine('handlebars', exphbs({
   defaultLayout: 'main'
@@ -64,7 +69,7 @@ db.once('open', () => {
 app.use('/', HomeRouter);
 app.use('/records', RecordRouter);
 app.use('/users', UserRouter);
-
+app.use('/auth', AuthRouter);
 
 app.listen(port, () => {
   console.log('Express is running.')
