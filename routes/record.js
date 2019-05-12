@@ -4,10 +4,14 @@ const Record = require('../models/record');
 const {
   authenticated
 } = require('../config/auth');
+const moment = require('moment')
 
 // 建立 Record 頁面
 router.get('/new', authenticated, (req, res) => {
-  res.render('new');
+  const today = moment().format('YYYY-MM-DD')
+  res.render('new', {
+    today
+  });
 });
 
 // 建立 Record 動作
