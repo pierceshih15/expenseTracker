@@ -64,7 +64,7 @@ cd expenseTracker
 ```
 在 Terminal 找到 Seeder.js 檔案
 
-執行 node .\models\seeds\seeder.js 匯入使用者與餐廳資料
+執行 node ./models/seeds/seeder.js 匯入使用者與餐廳資料
 ```
 
 當 terminal 出現以下字樣，即表示種子資料已新增至資料庫，按下 ctrl + c 結束執行
