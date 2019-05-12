@@ -25,19 +25,19 @@
         <div class="btn-group col-5 d-inline-block">
           <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
-            {{#if filterCategory}}
-            {{{filterCategory}}} 類別
+            {{#if filterCategoryChineseName}}
+            {{{filterCategoryChineseName}}} 類別
             {{else}}
             請選擇類別
             {{/if}}
           </button>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="/?filterCategory=&?filterMonth={{filterMonth}}">不按類別</a>
-            {{#each categoryList}}
-            <a class="dropdown-item" href="/?filterCategory={{this.name_en}}&?filterMonth={{filterMonth}}">
-              {{this.name}}
-            </a>
-            {{/each}}
+            <a class="dropdown-item" href="/?filterCategory=home&filterMonth={{filterMonth}}">家居物業</a>
+            <a class="dropdown-item" href="/?filterCategory=shuttle-van">交通出行</a>
+            <a class="dropdown-item" href="/?filterCategory=grin-beam&filterMonth={{filterMonth}}">休閒娛樂</a>
+            <a class="dropdown-item" href="/?filterCategory=utensils&filterMonth={{filterMonth}}">餐飲食品</a>
+            <a class="dropdown-item" href="/?filterCategory=pen&filterMonth={{filterMonth}}">其他</a>
           </div>
         </div>
 

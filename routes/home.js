@@ -13,6 +13,8 @@ router.get('/', authenticated, (req, res) => {
   const filterMonthRegExp = new RegExp("2019-" + filterMonth, "i");
   const filterCategory = req.query.filterCategory || '';
   const filterCategoryRegExp = new RegExp(filterCategory, "i");
+  const filterCategoryChineseName = categoryList[filterCategory];
+
   Record.find({
     userId: req.user._id,
     date: {
@@ -34,7 +36,8 @@ router.get('/', authenticated, (req, res) => {
       categoryList,
       totalAmount,
       filterMonth,
-      filterCategory
+      filterCategory,
+      filterCategoryChineseName
     });
   })
 })

@@ -2,6 +2,15 @@
 
 一個使用 Node.js + Express 打造的記帳網站，提供使用者註冊個人帳號，管理自己的餐廳清單，如新增、修改、刪除支出資料等功能，同時，可以依照月份或類別進行篩選。
 
+[Demo Website](https://pipi-expense-tracker.herokuapp.com/users/login)
+
+歡迎使用測試帳號登入使用，帳密如下：
+
+```
+帳號：ming@gmail.com
+密碼：1234
+```
+
 ## 專案畫面
 
 ![image](https://github.com/pierceshih15/expenseTracker/blob/master/public/img/demoPage.png)
